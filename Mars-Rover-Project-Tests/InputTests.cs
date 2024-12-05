@@ -5,7 +5,7 @@ using Mars_Rover_Project.Enums;
 
 namespace Mars_Rover_Project_Tests
 {
-    public class Tests
+    public class InputTests
     {
         [Test]
         public void Test_Valid_Plateau_Size()
