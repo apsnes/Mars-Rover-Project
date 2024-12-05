@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mars-Rover-Project-Tests", 
 		{0EF2E263-0F3F-4E1A-A4AE-DB44BDA036F6} = {0EF2E263-0F3F-4E1A-A4AE-DB44BDA036F6}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Mars_Rover", "WPF_Mars_Rover\WPF_Mars_Rover.csproj", "{E15053EB-3046-4192-8DD5-8EA4CA3CD262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{C1100AF2-6772-430C-A8F8-5C5D9C0D967F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1100AF2-6772-430C-A8F8-5C5D9C0D967F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1100AF2-6772-430C-A8F8-5C5D9C0D967F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E15053EB-3046-4192-8DD5-8EA4CA3CD262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E15053EB-3046-4192-8DD5-8EA4CA3CD262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E15053EB-3046-4192-8DD5-8EA4CA3CD262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E15053EB-3046-4192-8DD5-8EA4CA3CD262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

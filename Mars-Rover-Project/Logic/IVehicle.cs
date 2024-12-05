@@ -1,6 +1,6 @@
 ﻿namespace Mars_Rover_Project.Logic
 {
-    internal interface IVehicle
+    public interface IVehicle
     {
         Position Position { get; set; }
         void ChangeDirection(string input);

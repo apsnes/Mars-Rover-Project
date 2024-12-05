@@ -32,7 +32,7 @@ namespace Mars_Rover_Project.Input
         }
         internal static PlateauSize ParsePlateauSize(string inputWidth, string inputHeight)
         {
-            if (!int.TryParse(inputWidth, out int width) || !int.TryParse(inputHeight, out int height) || width < 1 || height < 1 || width > 100 || height > 100)
+            if (!int.TryParse(inputWidth, out int width) || !int.TryParse(inputHeight, out int height) || width < 1 || height < 1 || width > 20 || height > 20)
             {
                 throw new ArgumentException("Invalid width input");
             }
@@ -40,7 +40,7 @@ namespace Mars_Rover_Project.Input
         }
         internal static Position ParsePosition(string xString, string yString, string direction)
         {
-            if (!int.TryParse(xString, out int x) || !int.TryParse(yString, out int y) || x < 1 || y < 1 || x > 100 || y > 100)
+            if (!int.TryParse(xString, out int x) || !int.TryParse(yString, out int y) || x < 1 || y < 1 || x > 20 || y > 20)
             {
                 throw new ArgumentException("Invalid coordinate");
             }

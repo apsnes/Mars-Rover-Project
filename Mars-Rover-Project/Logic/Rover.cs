@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover_Project.Logic
 {
-    internal class Rover : IVehicle
+    public class Rover : BaseClass, IVehicle
     {
         public Position Position { get; set; }
         public Rover(int x, int y, Direction direction)

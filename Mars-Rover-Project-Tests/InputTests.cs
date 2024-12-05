@@ -56,10 +56,10 @@ namespace Mars_Rover_Project_Tests
         public void Test_Plateau_Max_Size()
         {
             //Arrange
-            PlateauSize ExpectedPlateau = PlateauSize.GetInstance(100, 100);
+            PlateauSize ExpectedPlateau = PlateauSize.GetInstance(20, 20);
 
             //Act
-            PlateauSize OutputPlateau = InputParser.ParsePlateauSize("100", "100");
+            PlateauSize OutputPlateau = InputParser.ParsePlateauSize("20", "20");
 
             //Assert
             OutputPlateau.Should().BeEquivalentTo(ExpectedPlateau);
@@ -135,10 +135,10 @@ namespace Mars_Rover_Project_Tests
         public void Test_Position_Max_Size()
         {
             //Arrange
-            Position ExpectedPosition = new Position(100, 100, Direction.North);
+            Position ExpectedPosition = new Position(20, 20, Direction.North);
 
             //Act
-            Position OutputPosition = InputParser.ParsePosition("100", "100", "N");
+            Position OutputPosition = InputParser.ParsePosition("20", "20", "N");
 
             //Assert
             OutputPosition.Should().BeEquivalentTo(ExpectedPosition);

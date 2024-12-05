@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover_Project
 {
-    internal class PlateauSize
+    public class PlateauSize
     {
         public int Width { get; set; }
         public int Height { get; set; }
@@ -18,7 +18,7 @@ namespace Mars_Rover_Project
         }
         public static PlateauSize GetInstance()
         {
-            if (instance == null) instance = new PlateauSize(5, 5);
+            if (instance == null) instance = new PlateauSize(10, 10);
             return instance;
         }
         public static PlateauSize GetInstance(int width, int height)

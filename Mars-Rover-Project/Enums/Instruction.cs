@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover_Project.Enums
 {
-    internal enum Instruction
+    public enum Instruction
     {
         L,
         R,
