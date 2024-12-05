@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mars-Rover-Project", "Mars-Rover-Project\Mars-Rover-Project.csproj", "{0EF2E263-0F3F-4E1A-A4AE-DB44BDA036F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mars-Rover-Project-Tests", "Mars-Rover-Project-Tests\Mars-Rover-Project-Tests.csproj", "{C1100AF2-6772-430C-A8F8-5C5D9C0D967F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0EF2E263-0F3F-4E1A-A4AE-DB44BDA036F6} = {0EF2E263-0F3F-4E1A-A4AE-DB44BDA036F6}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

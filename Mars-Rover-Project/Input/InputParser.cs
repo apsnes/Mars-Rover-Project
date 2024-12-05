@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mars_Rover_Project
+namespace Mars_Rover_Project.Input
 {
     internal static class InputParser
     {
@@ -13,10 +13,10 @@ namespace Mars_Rover_Project
         {
             switch (input)
             {
-                case ("N"): return Direction.North;
-                case ("E"): return Direction.East;
-                case ("S"): return Direction.South;
-                case ("W"): return Direction.West;
+                case "N": return Direction.North;
+                case "E": return Direction.East;
+                case "S": return Direction.South;
+                case "W": return Direction.West;
                 default: throw new ArgumentException("Invalid direction input");
             }
         }
@@ -24,21 +24,17 @@ namespace Mars_Rover_Project
         {
             switch (input)
             {
-                case ("L"): return Instruction.L;
-                case ("R"): return Instruction.R;
-                case ("M"): return Instruction.M;
+                case "L": return Instruction.L;
+                case "R": return Instruction.R;
+                case "M": return Instruction.M;
                 default: throw new ArgumentException("Invalid Instruction input");
             }
         }
         internal static PlateauSize ParsePlateauSize(string inputWidth, string inputHeight)
         {
-            if (!int.TryParse(inputWidth, out int width))
+            if (!int.TryParse(inputWidth, out int width) || !int.TryParse(inputHeight, out int height) || width < 1 || height < 1 || width > 100 || height > 100)
             {
                 throw new ArgumentException("Invalid width input");
-            }
-            if (!int.TryParse(inputHeight, out int height))
-            {
-                throw new ArgumentException("Invalid height input");
             }
             return new PlateauSize(width, height);
         }
