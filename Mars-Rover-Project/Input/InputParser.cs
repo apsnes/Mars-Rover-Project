@@ -40,13 +40,9 @@ namespace Mars_Rover_Project.Input
         }
         internal static Position ParsePosition(string xString, string yString, string direction)
         {
-            if (!int.TryParse(xString, out int x))
+            if (!int.TryParse(xString, out int x) || !int.TryParse(yString, out int y) || x < 1 || y < 1 || x > 100 || y > 100)
             {
-                throw new ArgumentException("Invalid x coordinate");
-            }
-            if (!int.TryParse(yString, out int y))
-            {
-                throw new ArgumentException("Invalid x coordinate");
+                throw new ArgumentException("Invalid coordinate");
             }
             return new Position(x, y, ParseDirection(direction));
         }
