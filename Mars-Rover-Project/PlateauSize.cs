@@ -6,9 +6,5 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover_Project
 {
-    internal class PlateauSize
-    {
-        private int height;
-        private int width;
-    }
+    internal record PlateauSize(int Width, int Height) { }
 }

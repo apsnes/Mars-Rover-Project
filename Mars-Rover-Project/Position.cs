@@ -7,10 +7,5 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover_Project
 {
-    internal class Position
-    {
-        private int x;
-        private int y;
-        private Direction direction;
-    }
+    internal record Position(int X, int Y, Direction Direction) { }
 }
