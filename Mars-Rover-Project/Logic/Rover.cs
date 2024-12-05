@@ -11,6 +11,10 @@ namespace Mars_Rover_Project.Logic
     internal class Rover
     {
         public Position Position { get; set; }
+        public Rover(int x, int y, Direction direction)
+        {
+            Position = new Position(x, y, direction);
+        }
         public Rover()
         {
             Position = new Position(0, 0, Direction.North);
