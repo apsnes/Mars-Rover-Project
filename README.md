@@ -1,7 +1,7 @@
 ## About
 This is a simulation project in C# that allows a user to control multiple rovers exploring mars.
 
-# Features
+## Features
 Customizable plateau size
 Add or remove any number of mars rovers
 Control rovers movement and direction
