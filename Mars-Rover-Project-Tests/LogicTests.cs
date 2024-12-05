@@ -34,18 +34,6 @@ public class LogicTests
         act.Should().Throw<ArgumentException>();
     }
     [Test]
-    public void Test_Update_Position_Invalid()
-    {
-        //Arrange
-        Position pos = new Position(0, 0, Direction.South);        
-
-        //Act
-        Action act = () => pos.UpdatePosition();
-
-        //Assert
-        act.Should().Throw<InvalidOperationException>();
-    }
-    [Test]
     public void Test_Update_Position_Valid()
     {
         //Arrange
@@ -77,7 +65,7 @@ public class LogicTests
         Rover testRover = new(0, 0, Direction.North);
 
         //Act
-        testRover.Turn("L");
+        testRover.Instruct("L");
 
         //Assert
         testRover.Position.Direction.Should().Be(Direction.West);
@@ -89,7 +77,7 @@ public class LogicTests
         Rover testRover = new(0, 0, Direction.East);
 
         //Act
-        testRover.Turn("R");
+        testRover.Instruct("R");
 
         //Assert
         testRover.Position.Direction.Should().Be(Direction.South);
@@ -101,7 +89,7 @@ public class LogicTests
         Rover testRover = new(0, 0, Direction.East);
 
         //Act
-        Action act = () => testRover.Turn("!");
+        Action act = () => testRover.Instruct("!");
 
         //Assert
         act.Should().Throw<ArgumentException>();

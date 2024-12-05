@@ -25,19 +25,15 @@ namespace Mars_Rover_Project
             {
                 case Direction.North:
                     if (HasPositionNorth) Y++;
-                    else throw new InvalidOperationException("Invalid location");
                     break;
                 case Direction.South:
                     if (HasPositionSouth) Y--;
-                    else throw new InvalidOperationException("Invalid location");
                     break;
                 case Direction.East:
                     if (HasPositionEast) X++;
-                    else throw new InvalidOperationException("Invalid location");
                     break;
                 case Direction.West:
                     if (HasPositionWest) X--;
-                    else throw new InvalidOperationException("Invalid location");
                     break;
                 default: throw new InvalidOperationException("Invalid location");
             }

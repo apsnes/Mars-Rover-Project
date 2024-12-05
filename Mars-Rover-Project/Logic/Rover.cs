@@ -32,7 +32,7 @@ namespace Mars_Rover_Project.Logic
         {
             Position.UpdateDirection(direction);
         }
-        public void Turn(string input)
+        public void Instruct(string input)
         {
             Instruction instruction = InputParser.ParseInstruction(input);
             switch (instruction)
