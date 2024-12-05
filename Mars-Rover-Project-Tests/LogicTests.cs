@@ -70,4 +70,40 @@ public class LogicTests
         //Assert
         testRover.Position.Y.Should().Be(1);
     }
+    [Test]
+    public void Test_Rover_Turn_Left()
+    {
+        //Arrange
+        Rover testRover = new(0, 0, Direction.North);
+
+        //Act
+        testRover.Turn("L");
+
+        //Assert
+        testRover.Position.Direction.Should().Be(Direction.West);
+    }
+    [Test]
+    public void Test_Rover_Turn_Right()
+    {
+        //Arrange
+        Rover testRover = new(0, 0, Direction.East);
+
+        //Act
+        testRover.Turn("R");
+
+        //Assert
+        testRover.Position.Direction.Should().Be(Direction.South);
+    }
+    [Test]
+    public void Test_Rover_Turn_Invalid()
+    {
+        //Arrange
+        Rover testRover = new(0, 0, Direction.East);
+
+        //Act
+        Action act = () => testRover.Turn("!");
+
+        //Assert
+        act.Should().Throw<ArgumentException>();
+    }
 }

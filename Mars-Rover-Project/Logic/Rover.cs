@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover_Project.Logic
 {
-    internal class Rover
+    internal class Rover : IVehicle
     {
         public Position Position { get; set; }
         public Rover(int x, int y, Direction direction)
@@ -27,6 +27,33 @@ namespace Mars_Rover_Project.Logic
         {
             Direction direction = InputParser.ParseDirection(input);
             Position.UpdateDirection(direction);
+        }
+        public void ChangeDirection(Direction direction)
+        {
+            Position.UpdateDirection(direction);
+        }
+        public void Turn(string input)
+        {
+            Instruction instruction = InputParser.ParseInstruction(input);
+            switch (instruction)
+            {
+                case Instruction.L:
+                    if (Position.Direction == Direction.North) ChangeDirection(Direction.West);
+                    else if (Position.Direction == Direction.East) ChangeDirection(Direction.North);
+                    else if (Position.Direction == Direction.South) ChangeDirection(Direction.East);
+                    else if (Position.Direction == Direction.West) ChangeDirection(Direction.South);
+                    break;
+                case Instruction.R:
+                    if (Position.Direction == Direction.North) ChangeDirection(Direction.East);
+                    else if (Position.Direction == Direction.East) ChangeDirection(Direction.South);
+                    else if (Position.Direction == Direction.South) ChangeDirection(Direction.West);
+                    else if (Position.Direction == Direction.West) ChangeDirection(Direction.North);
+                    break;
+                case Instruction.M:
+                    Move();
+                    break;
+                default: throw new ArgumentException("Invalid input");
+            }
         }
     }
 }

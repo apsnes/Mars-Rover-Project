@@ -17,7 +17,7 @@ namespace Mars_Rover_Project.Input
                 case "E": return Direction.East;
                 case "S": return Direction.South;
                 case "W": return Direction.West;
-                default: throw new ArgumentException("Invalid direction input");
+                default: throw new ArgumentException("Invalid input");
             }
         }
         internal static Instruction ParseInstruction(string input)
