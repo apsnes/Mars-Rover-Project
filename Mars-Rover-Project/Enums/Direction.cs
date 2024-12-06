@@ -11,6 +11,7 @@ namespace Mars_Rover_Project.Enums
         North,
         East,
         South,
-        West
+        West,
+        Error
     }
 }

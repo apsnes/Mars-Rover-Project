@@ -45,24 +45,16 @@ namespace Mars_Rover_Project
                 _session.UpdatePlateau();
                 PrintOptions();
                 MainMenuOptions selectedOption = InputParser.ParseMenuOption(Console.ReadLine());
-
-                if (selectedOption == MainMenuOptions.AddRover)
-                {
-                    AddRover();
-                }
-                if (selectedOption == MainMenuOptions.MoveRover)
-                {
-                    MoveRover();
-                }
+                if (selectedOption == MainMenuOptions.SetRover) SetRover();
+                if (selectedOption == MainMenuOptions.AddRover) AddRover();
+                if (selectedOption == MainMenuOptions.MoveRover) MoveRover();
                 if (selectedOption == MainMenuOptions.Quit) break;
-                if (selectedOption == MainMenuOptions.Error)
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
-                }
+                if (selectedOption == MainMenuOptions.Error) Console.WriteLine("Invalid input. Please try again.");
             }           
         }
         internal void PrintOptions()
         {
+            Console.WriteLine(" [0] - Set current rover to control");
             Console.WriteLine(" [1] - Add a rover");
             Console.WriteLine(" [2] - Move a rover");
             Console.WriteLine(" [3] - Quit and return to Earth");
@@ -91,11 +83,22 @@ namespace Mars_Rover_Project
             Console.WriteLine(" L - Turn left");
             Console.WriteLine(" R - Turn right ");
             Console.WriteLine(" M - Move one position ");
-            Instruction instruction = InputParser.ParseInstruction(Console.ReadLine());
+            Instruction instruction = Instruction.Error;
+            instruction = InputParser.ParseInstruction(Console.ReadLine());
+            while (instruction == Instruction.Error)
+            {
+                Console.WriteLine("Invalid input. Please try again: ");
+                instruction = InputParser.ParseInstruction(Console.ReadLine());
+            }
             _session.CurrentRover.Instruct(instruction);
         }
         internal void SetRover()
         {
+            if (_session.Rovers.Count == 0)
+            {
+                Console.WriteLine("No available rovers to control");
+                return;
+            }
             Console.WriteLine("Enter the ID of the rover you'd Like to control: ");
             string id = Console.ReadLine();
             while (!int.TryParse(id, out int idInt) || !_session.RoverExists(int.Parse(id)))

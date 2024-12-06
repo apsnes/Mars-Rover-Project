@@ -8,6 +8,7 @@ namespace Mars_Rover_Project.Enums
 {
     internal enum MainMenuOptions
     {
+        SetRover,
         AddRover,
         MoveRover,
         Quit,

@@ -10,6 +10,7 @@ namespace Mars_Rover_Project.Enums
     {
         L,
         R,
-        M
+        M,
+        Error
     }
 }

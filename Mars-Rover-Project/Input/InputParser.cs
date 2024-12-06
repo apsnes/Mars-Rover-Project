@@ -34,6 +34,7 @@ namespace Mars_Rover_Project.Input
         {
             switch (input)
             {
+                case "0": return MainMenuOptions.SetRover;
                 case "1": return MainMenuOptions.AddRover;
                 case "2": return MainMenuOptions.MoveRover;
                 case "3": return MainMenuOptions.Quit;
