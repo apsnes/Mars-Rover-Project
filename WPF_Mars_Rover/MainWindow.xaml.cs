@@ -33,17 +33,6 @@ namespace WPF_Mars_Rover
             _session.CurrentRover = _session.Rovers.First();
 
             CreateMatrix();
-
-            //Rover currentRover = _session.CurrentRover;
-            //Rectangle roverAsRectangle = new Rectangle
-            //{
-            //    Fill = new SolidColorBrush(Colors.DarkBlue),
-            //    Stroke = new SolidColorBrush(Colors.White),
-            //    StrokeThickness = 2
-            //};
-            //Grid.SetRow(roverAsRectangle, (_session.Plateau.Height - 1 - currentRover.Position.Y));
-            //Grid.SetColumn(roverAsRectangle, currentRover.Position.X); 
-            //MatrixGrid.Children.Add(roverAsRectangle);
         }
         private void CreateMatrix()
         {
