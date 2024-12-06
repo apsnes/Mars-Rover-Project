@@ -13,7 +13,7 @@ namespace Mars_Rover_Project.Logic
         public List<Rover> Rovers = new();
         public Rover CurrentRover = new Rover(new Position(0, 0, Direction.North), 0);
         private static Session _session;
-        private string[,] map;
+        public string[,] map;
         private PlateauSize plateau;
         private Session()
         {      }

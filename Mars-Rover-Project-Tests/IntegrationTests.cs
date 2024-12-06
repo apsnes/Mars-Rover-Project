@@ -55,4 +55,40 @@ public class IntegrationTests
         //Assert
         yourRover.Position.Should().BeEquivalentTo(ExpectedPosition);
     }
+    [Test]
+    public void Rover_Exists()
+    {
+        //Arrange
+        Position pos = new Position(4, 1, Direction.North);
+        Session session = Session.GetInstance();
+        Rover myRover = new Rover(pos, 2);
+
+        //Act
+        session.AddRover(pos, 2);
+
+        //Assert
+        session.Rovers.Count.Should().Be(1);
+    }
+    [Test]
+    public void Plateau_Clear()
+    {
+        //Arrange
+        Session session = Session.GetInstance();
+        session.Clear();
+        string[,] map = session.map;
+        PlateauSize plateau = PlateauSize.GetInstance();
+        int width = plateau.Width;
+        int height = plateau.Height;
+
+        //Act
+
+        //Assert
+        for (int row = 0; row < width; row++)
+        {
+            for (int col = 0; col < height; col++)
+            {
+                map[row,col].Should().Be(" - ");
+            }
+        }
+    }
 }

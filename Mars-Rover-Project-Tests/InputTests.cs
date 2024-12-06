@@ -25,10 +25,10 @@ namespace Mars_Rover_Project_Tests
             //Arrange
 
             //Act
-            Action act = () => InputParser.ParsePlateauSize("5", "-6");
+            PlateauSize plateau = InputParser.ParsePlateauSize("5", "-6");
 
             //Assert
-            act.Should().Throw<ArgumentException>();
+            plateau.Should().BeNull();
         }
         [Test]
         public void Test_Invalid_Plateau_Size_0()
@@ -36,10 +36,10 @@ namespace Mars_Rover_Project_Tests
             //Arrange
 
             //Act
-            Action act = () => InputParser.ParsePlateauSize("0", "0");
+            PlateauSize plateau = InputParser.ParsePlateauSize("0", "0");
 
             //Assert
-            act.Should().Throw<ArgumentException>();
+            plateau.Should().BeNull();
         }
         [Test]
         public void Test_Plateau_Too_Large()
@@ -47,10 +47,10 @@ namespace Mars_Rover_Project_Tests
             //Arrange
 
             //Act
-            Action act = () => InputParser.ParsePlateauSize("101", "101");
+            PlateauSize plateau = InputParser.ParsePlateauSize("101", "101");
 
             //Assert
-            act.Should().Throw<ArgumentException>();
+            plateau.Should().BeNull();
         }
         [Test]
         public void Test_Plateau_Max_Size()
@@ -70,10 +70,10 @@ namespace Mars_Rover_Project_Tests
             //Arrange
 
             //Act
-            Action act = () => InputParser.ParsePlateauSize("sdfs", "!!");
+            PlateauSize plateau = InputParser.ParsePlateauSize("sdfs", "!!");
 
             //Assert
-            act.Should().Throw<ArgumentException>();
+            plateau.Should().BeNull();
         }
         [Test]
         public void Test_Valid_Position()
