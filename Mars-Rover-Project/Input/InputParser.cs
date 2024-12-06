@@ -46,7 +46,7 @@ namespace Mars_Rover_Project.Input
             {
                 throw new ArgumentException("Invalid width input");
             }
-            return PlateauSize.GetInstance(width, height);
+            return PlateauSize.SetInstance(width, height);
         }
         internal static Position ParsePosition(string xString, string yString, string direction)
         {

@@ -19,7 +19,7 @@ namespace WPF_Mars_Rover
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Session _session = new();
+        private readonly Session _session = Session.GetInstance();
         public MainWindow()
         {
             InitializeComponent();

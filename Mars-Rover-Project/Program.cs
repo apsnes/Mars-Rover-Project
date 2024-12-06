@@ -9,7 +9,8 @@ namespace Mars_Rover_Project
     {
         static void Main()
         {
-            ConsoleUI.PrintPlateau();
+            ConsoleUI ui = ConsoleUI.GetInstance();
+            ui.Start();
         }
     }
 }

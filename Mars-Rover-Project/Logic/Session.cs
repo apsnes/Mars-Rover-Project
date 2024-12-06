@@ -11,10 +11,10 @@ namespace Mars_Rover_Project.Logic
     public class Session : BaseClass
     {
         public List<Rover> Rovers = new();
-        public Rover CurrentRover = new();
+        public Rover CurrentRover = new Rover(new Position(0, 0, Direction.North), 0);
         private static Session _session;
         private string[,] map;
-        private PlateauSize plateau = PlateauSize.GetInstance();
+        private PlateauSize plateau;
         private Session()
         {      }
         public static Session GetInstance()
@@ -22,9 +22,9 @@ namespace Mars_Rover_Project.Logic
             if (_session == null) _session = new Session();
             return _session;
         }
-        public void AddRover(Position position)
+        public void AddRover(Position position, int id)
         {
-            Rovers.Add(new Rover(position));
+            Rovers.Add(new Rover(position, id));
         }
         public void Move()
         {
@@ -32,15 +32,15 @@ namespace Mars_Rover_Project.Logic
         }
         public void TurnLeft()
         {
-            CurrentRover.Instruct("L");
+            CurrentRover.Instruct(Instruction.L);
         }
         public void TurnRight()
         {
-            CurrentRover.Instruct("R");
+            CurrentRover.Instruct(Instruction.R);
         }
-        public void SetCurrentRover(Rover rover)
+        public void SetCurrentRover(int id)
         {
-            CurrentRover = rover;
+            CurrentRover = Rovers.First(r => r.ID == id);        
         }
         internal void Run()
         {
@@ -53,6 +53,7 @@ namespace Mars_Rover_Project.Logic
         }
         internal void Clear()
         {
+            plateau = PlateauSize.GetInstance();
             int width = plateau.Width;
             int height = plateau.Height;
             map = new string[width, height];
@@ -71,7 +72,7 @@ namespace Mars_Rover_Project.Logic
                 int xPosition = rover.Position.X;
                 int yPosition = rover.Position.Y;
                 yPosition = (plateau.Height - yPosition);
-                map[xPosition, yPosition] = "-R-";
+                map[xPosition, yPosition] = $"-{rover.ID}-";
             }
         }
         internal void UpdatePlateau()
@@ -87,9 +88,18 @@ namespace Mars_Rover_Project.Logic
             {
                 for (int cols = 0; cols < plateau.Height; cols++)
                 {
-                    Console.WriteLine(map[rows, cols]);
+                    Console.Write(map[rows, cols]);
                 }
+                Console.WriteLine("\n");
             }
+        }
+        internal bool RoverExists(int id)
+        {
+            foreach(Rover rover in Rovers)
+            {
+                if (rover.ID == id) return true;
+            }
+            return false;
         }
     }
 }

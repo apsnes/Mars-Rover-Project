@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Mars_Rover_Project.Input;
+using System.Collections.Specialized;
 
 namespace Mars_Rover_Project
 {
@@ -34,6 +35,7 @@ namespace Mars_Rover_Project
 
             while (true)
             {
+                _session.UpdatePlateau();
                 PrintOptions();
                 MainMenuOptions selectedOption = InputParser.ParseMenuOption(Console.ReadLine());
 
@@ -57,7 +59,14 @@ namespace Mars_Rover_Project
             Console.WriteLine("Enter starting direction: ");
             string direction = Console.ReadLine();
             Position startingPosition = InputParser.ParsePosition(x, y, direction);
-            _session.AddRover(startingPosition);
+            Console.WriteLine("Enter rover ID:");
+            string id = Console.ReadLine();
+            while (!int.TryParse(id, out int idInt) || _session.RoverExists(int.Parse(id)))
+            {
+                Console.WriteLine("Invalid id, please try again:");
+                id = Console.ReadLine();
+            }
+            _session.AddRover(startingPosition, int.Parse(id));
         }
         internal void MoveRover()
         {
@@ -67,6 +76,17 @@ namespace Mars_Rover_Project
             Console.WriteLine(" M - Move one position ");
             Instruction instruction = InputParser.ParseInstruction(Console.ReadLine());
             _session.CurrentRover.Instruct(instruction);
+        }
+        internal void SetRover()
+        {
+            Console.WriteLine("Enter the ID of the rover you'd Like to control: ");
+            string id = Console.ReadLine();
+            while (!int.TryParse(id, out int idInt) || !_session.RoverExists(int.Parse(id)))
+            {
+                Console.WriteLine("Invalid id, please try again:");
+                id = Console.ReadLine();
+            }
+            _session.SetCurrentRover(int.Parse(id));
         }
     }
 }

@@ -2,6 +2,7 @@
 using Mars_Rover_Project.Input;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,16 @@ namespace Mars_Rover_Project.Logic
 {
     public class Rover : BaseClass, IVehicle
     {
+        public int ID;
         public Position Position { get; set; }
-        public Rover(Position position)
+        public Rover(Position position, int id)
         {
             Position = position;
+            ID = id;
         }
-        public Rover()
+        public Rover(int id)
         {
+            ID = id;
             Position = new Position(0, 0, Direction.North);
         }
         public void Move()
