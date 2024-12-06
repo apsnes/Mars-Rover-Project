@@ -11,7 +11,7 @@ namespace Mars_Rover_Project_Tests
         public void Test_Valid_Plateau_Size()
         {
             //Arrange
-            PlateauSize ExpectedPlateau = PlateauSize.GetInstance(5, 6);
+            PlateauSize ExpectedPlateau = PlateauSize.SetInstance(5, 6);
 
             //Act
             PlateauSize OutputPlateau = InputParser.ParsePlateauSize("5", "6");
@@ -56,7 +56,7 @@ namespace Mars_Rover_Project_Tests
         public void Test_Plateau_Max_Size()
         {
             //Arrange
-            PlateauSize ExpectedPlateau = PlateauSize.GetInstance(20, 20);
+            PlateauSize ExpectedPlateau = PlateauSize.SetInstance(20, 20);
 
             //Act
             PlateauSize OutputPlateau = InputParser.ParsePlateauSize("20", "20");

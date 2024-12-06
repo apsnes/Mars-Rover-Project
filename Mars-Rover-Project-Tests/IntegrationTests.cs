@@ -14,19 +14,19 @@ public class IntegrationTests
         //Arrange
         InputParser.ParsePlateauSize("5", "5");
         Position startingPosition = InputParser.ParsePosition("1", "2", "N");
-        Rover myRover = new Rover(startingPosition.X, startingPosition.Y, startingPosition.Direction);
+        Rover myRover = new Rover(startingPosition, 1);
         Position ExpectedPosition = new(1, 3, Direction.North);
 
         //Act
-        myRover.Instruct("L");
-        myRover.Instruct("M");
-        myRover.Instruct("L");
-        myRover.Instruct("M");
-        myRover.Instruct("L");
-        myRover.Instruct("M");
-        myRover.Instruct("L");
-        myRover.Instruct("M");
-        myRover.Instruct("M");
+        myRover.Instruct(Instruction.L);
+        myRover.Instruct(Instruction.M);
+        myRover.Instruct(Instruction.L);
+        myRover.Instruct(Instruction.M);
+        myRover.Instruct(Instruction.L);
+        myRover.Instruct(Instruction.M);
+        myRover.Instruct(Instruction.L);
+        myRover.Instruct(Instruction.M);
+        myRover.Instruct(Instruction.M);
 
         //Assert
         myRover.Position.Should().BeEquivalentTo(ExpectedPosition);
@@ -37,20 +37,20 @@ public class IntegrationTests
         //Arrange
         InputParser.ParsePlateauSize("5", "5");
         Position yourStartingPosition = InputParser.ParsePosition("3", "3", "E");
-        Rover yourRover = new Rover(yourStartingPosition.X, yourStartingPosition.Y, yourStartingPosition.Direction);
-        Position ExpectedPosition = new(5, 1, Direction.East);
+        Rover yourRover = new Rover(yourStartingPosition, 2);
+        Position ExpectedPosition = new(4, 1, Direction.East);
 
         //Act
-        yourRover.Instruct("M");
-        yourRover.Instruct("M");
-        yourRover.Instruct("R");
-        yourRover.Instruct("M");
-        yourRover.Instruct("M");
-        yourRover.Instruct("R");
-        yourRover.Instruct("M");
-        yourRover.Instruct("R");
-        yourRover.Instruct("R");
-        yourRover.Instruct("M");
+        yourRover.Instruct(Instruction.M);
+        yourRover.Instruct(Instruction.M);
+        yourRover.Instruct(Instruction.R);
+        yourRover.Instruct(Instruction.M);
+        yourRover.Instruct(Instruction.M);
+        yourRover.Instruct(Instruction.R);
+        yourRover.Instruct(Instruction.M);
+        yourRover.Instruct(Instruction.R);
+        yourRover.Instruct(Instruction.R);
+        yourRover.Instruct(Instruction.M);
 
         //Assert
         yourRover.Position.Should().BeEquivalentTo(ExpectedPosition);

@@ -13,7 +13,8 @@ public class LogicTests
     public void Test_Change_Direction_CCW()
     {
         //Arrange
-        Rover testRover = new();
+        Position pos = new(0, 0, Direction.North);
+        Rover testRover = new(pos, 1);
 
         //Act
         testRover.ChangeDirection("W");
@@ -25,7 +26,8 @@ public class LogicTests
     public void Test_Change_Direction_Invalid()
     {
         //Arrange
-        Rover testRover = new();
+        Position pos = new(0, 0, Direction.North);
+        Rover testRover = new(pos, 1);
 
         //Act
         Action act = () => testRover.ChangeDirection("D");
@@ -49,8 +51,9 @@ public class LogicTests
     public void Test_Rover_Move_Valid_Location()
     {
         //Arrange
-        PlateauSize.GetInstance(20, 20);
-        Rover testRover = new(0, 0, Direction.North);
+        PlateauSize.SetInstance(20, 20);
+        Position pos = new(0, 0, Direction.North);
+        Rover testRover = new(pos, 1);
 
         //Act
         testRover.Move();
@@ -62,10 +65,11 @@ public class LogicTests
     public void Test_Rover_Turn_Left()
     {
         //Arrange
-        Rover testRover = new(0, 0, Direction.North);
+        Position pos = new(0, 0, Direction.North);
+        Rover testRover = new(pos, 1);
 
         //Act
-        testRover.Instruct("L");
+        testRover.Instruct(Instruction.L);
 
         //Assert
         testRover.Position.Direction.Should().Be(Direction.West);
@@ -74,24 +78,13 @@ public class LogicTests
     public void Test_Rover_Turn_Right()
     {
         //Arrange
-        Rover testRover = new(0, 0, Direction.East);
+        Position pos = new(0, 0, Direction.East);
+        Rover testRover = new(pos, 1);
 
         //Act
-        testRover.Instruct("R");
+        testRover.Instruct(Instruction.R);
 
         //Assert
         testRover.Position.Direction.Should().Be(Direction.South);
-    }
-    [Test]
-    public void Test_Rover_Turn_Invalid()
-    {
-        //Arrange
-        Rover testRover = new(0, 0, Direction.East);
-
-        //Act
-        Action act = () => testRover.Instruct("!");
-
-        //Assert
-        act.Should().Throw<ArgumentException>();
     }
 }
