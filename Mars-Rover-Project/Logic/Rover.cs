@@ -11,8 +11,27 @@ namespace Mars_Rover_Project.Logic
 {
     public class Rover : BaseClass, IVehicle
     {
-        public int ID;
-        public Position Position { get; set; }
+        private Position _position;
+        private int _id;
+
+        public int ID
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(ID));
+            }
+        }
+        public Position Position
+        {
+            get => _position;
+            set
+            {
+                _position = value;
+                OnPropertyChanged(nameof(Position));
+            }
+        }
         public Rover(Position position, int id)
         {
             Position = position;

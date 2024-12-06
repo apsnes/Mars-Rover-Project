@@ -26,32 +26,37 @@
         <!-- Plateau View Window -->
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid Name="MatrixGrid" Margin="10"></Grid>
-
-
-
         </Grid>
 
         <!-- Controls -->
         <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="2">
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="250"></ColumnDefinition>
+                    <ColumnDefinition Width="266"></ColumnDefinition>
+                    <ColumnDefinition Width="266"></ColumnDefinition>
+                    <ColumnDefinition Width="266"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Foreground="White" Text="Current Position: "></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" Text="{Binding CurrentRover.Position.PositionString, FallbackValue='no data'}"></TextBlock>
+                </Grid>
+                
                 <Button Grid.Row="0" Grid.Column="0" Margin="25" VerticalAlignment="Center" Content="Turn left" BorderBrush="White" Foreground="White" Background="Black" BorderThickness="1" Height="25" Width="75" Click="OnClickTurnLeft"></Button>
                 <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Content="Turn Right" BorderBrush="White" Foreground="White" Background="Black" BorderThickness="1" Height="25" Width="75" Click="OnClickTurnRight"></Button>
                 <Button Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Content="Move" BorderBrush="White" Foreground="White" Background="Black" BorderThickness="1" Height="25" Width="75" Click="OnClickMove"></Button>
-                <TextBlock Grid.Row="0" Grid.Column="0" Foreground="White" Text="Current Position:"></TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" Text="{Binding session.CurrentRover.X}"></TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" Text="{Binding session.CurrentRover.Y}"></TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="2" Foreground="White" Text="Current Direction"></TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" Text="{Binding session.CurrentRover.Direction}"></TextBlock>
             </Grid>
         </Border> 
         

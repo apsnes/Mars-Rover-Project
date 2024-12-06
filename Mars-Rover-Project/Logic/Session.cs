@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +12,25 @@ namespace Mars_Rover_Project.Logic
 {
     public class Session : BaseClass
     {
-        public List<Rover> Rovers = new();
-        public Rover CurrentRover = new Rover(new Position(0, 0, Direction.North), 0);
+        public ObservableCollection<Rover> Rovers { get; set; } = new();
+        private Rover _currentRover;
+        public Rover CurrentRover
+        {
+            get => _currentRover; 
+            set
+            {
+                _currentRover = value;
+                OnPropertyChanged(nameof(CurrentRover));
+            }
+        }
         private static Session _session;
         public string[,] map;
-        private PlateauSize plateau;
+        public PlateauSize Plateau = PlateauSize.GetInstance();
         private Session()
-        {      }
+        {
+            CurrentRover = new Rover(new Position(0, 0, Direction.North), 1);
+            Clear();
+        }
         public static Session GetInstance()
         {
             if (_session == null) _session = new Session();
@@ -31,10 +45,14 @@ namespace Mars_Rover_Project.Logic
             int x = CurrentRover.Position.X;
             int y = CurrentRover.Position.Y;
             Direction dir = CurrentRover.Position.Direction;
-            if (!CurrentRover.Position.HasPositionNorth || (dir == Direction.North && map[y + 1, x] != " - ")) return;
-            if (!CurrentRover.Position.HasPositionEast || (dir == Direction.East && map[y, x + 1] != " - ")) return;
-            if (!CurrentRover.Position.HasPositionSouth || (dir == Direction.South && map[y - 1, x] != " - ")) return;
-            if (!CurrentRover.Position.HasPositionEast || (dir == Direction.North && map[y, x - 1] != " - ")) return;
+            //if (!CurrentRover.Position.HasPositionNorth || (dir == Direction.North && map[y + 1, x] != " - ")) return;
+            //if (!CurrentRover.Position.HasPositionEast || (dir == Direction.East && map[y, x + 1] != " - ")) return;
+            //if (!CurrentRover.Position.HasPositionSouth || (dir == Direction.South && map[y - 1, x] != " - ")) return;
+            //if (!CurrentRover.Position.HasPositionEast || (dir == Direction.North && map[y, x - 1] != " - ")) return;
+            if (!CurrentRover.Position.HasPositionNorth && dir == Direction.North) return;
+            if (!CurrentRover.Position.HasPositionEast && dir == Direction.East) return;
+            if (!CurrentRover.Position.HasPositionSouth && dir == Direction.South) return;
+            if (!CurrentRover.Position.HasPositionEast && dir == Direction.North) return;
             CurrentRover.Move();
         }
         public void TurnLeft()
@@ -60,9 +78,9 @@ namespace Mars_Rover_Project.Logic
         }
         internal void Clear()
         {
-            plateau = PlateauSize.GetInstance();
-            int width = plateau.Width;
-            int height = plateau.Height;
+            Plateau = PlateauSize.GetInstance();
+            int width = Plateau.Width;
+            int height = Plateau.Height;
             map = new string[width, height];
             for (int rows = 0; rows < width; rows++)
             {
@@ -78,7 +96,7 @@ namespace Mars_Rover_Project.Logic
             {
                 int xPosition = rover.Position.X;
                 int yPosition = rover.Position.Y;
-                yPosition = (plateau.Height - 1 - yPosition);
+                yPosition = (Plateau.Height - 1 - yPosition);
                 map[yPosition, xPosition] = $" {rover.ID} ";
             }
         }
@@ -91,9 +109,9 @@ namespace Mars_Rover_Project.Logic
         }
         internal void PrintPlateau()
         {
-            for (int rows = 0; rows < plateau.Width; rows++)
+            for (int rows = 0; rows < Plateau.Width; rows++)
             {
-                for (int cols = 0; cols < plateau.Height; cols++)
+                for (int cols = 0; cols < Plateau.Height; cols++)
                 {
                     Console.Write(map[rows, cols]);
                 }
