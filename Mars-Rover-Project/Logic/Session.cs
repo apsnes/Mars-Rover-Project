@@ -71,8 +71,8 @@ namespace Mars_Rover_Project.Logic
             {
                 int xPosition = rover.Position.X;
                 int yPosition = rover.Position.Y;
-                yPosition = (plateau.Height - yPosition);
-                map[xPosition, yPosition] = $"-{rover.ID}-";
+                yPosition = (plateau.Height - 1 - yPosition);
+                map[yPosition, xPosition] = $" {rover.ID} ";
             }
         }
         internal void UpdatePlateau()

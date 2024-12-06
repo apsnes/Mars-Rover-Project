@@ -10,6 +10,7 @@ namespace Mars_Rover_Project.Enums
     {
         AddRover,
         MoveRover,
-        Quit
+        Quit,
+        Error
     }
 }

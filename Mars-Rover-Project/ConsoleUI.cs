@@ -30,6 +30,13 @@ namespace Mars_Rover_Project
             string x = Console.ReadLine();
             string y = Console.ReadLine();
             plateau = InputParser.ParsePlateauSize(x, y);
+            while (plateau == null)
+            {
+                Console.WriteLine("Invalid plateau size. Please try again: ");
+                x = Console.ReadLine();
+                y = Console.ReadLine();
+                plateau = InputParser.ParsePlateauSize(x, y);
+            }
 
             Console.WriteLine("Preparing for mission start. What are your orders?");
 
@@ -39,9 +46,19 @@ namespace Mars_Rover_Project
                 PrintOptions();
                 MainMenuOptions selectedOption = InputParser.ParseMenuOption(Console.ReadLine());
 
-                if (selectedOption == MainMenuOptions.AddRover) AddRover();
-                if (selectedOption == MainMenuOptions.MoveRover) MoveRover();
+                if (selectedOption == MainMenuOptions.AddRover)
+                {
+                    AddRover();
+                }
+                if (selectedOption == MainMenuOptions.MoveRover)
+                {
+                    MoveRover();
+                }
                 if (selectedOption == MainMenuOptions.Quit) break;
+                if (selectedOption == MainMenuOptions.Error)
+                {
+                    Console.WriteLine("Invalid input. Please try again.");
+                }
             }           
         }
         internal void PrintOptions()

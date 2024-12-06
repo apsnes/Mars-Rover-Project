@@ -37,20 +37,20 @@ namespace Mars_Rover_Project.Input
                 case "1": return MainMenuOptions.AddRover;
                 case "2": return MainMenuOptions.MoveRover;
                 case "3": return MainMenuOptions.Quit;
-                default: throw new ArgumentException("Invalid Instruction input");
+                default: return MainMenuOptions.Error;
             }
         }
         internal static PlateauSize ParsePlateauSize(string inputWidth, string inputHeight)
         {
             if (!int.TryParse(inputWidth, out int width) || !int.TryParse(inputHeight, out int height) || width < 1 || height < 1 || width > 20 || height > 20)
             {
-                throw new ArgumentException("Invalid width input");
+                return null;
             }
             return PlateauSize.SetInstance(width, height);
         }
         internal static Position ParsePosition(string xString, string yString, string direction)
         {
-            if (!int.TryParse(xString, out int x) || !int.TryParse(yString, out int y) || x < 1 || y < 1 || x > 20 || y > 20)
+            if (!int.TryParse(xString, out int x) || !int.TryParse(yString, out int y) || x < 0 || y < 0 || x > 20 || y > 20)
             {
                 throw new ArgumentException("Invalid coordinate");
             }
