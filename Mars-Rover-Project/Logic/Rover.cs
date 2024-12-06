@@ -11,9 +11,9 @@ namespace Mars_Rover_Project.Logic
     public class Rover : BaseClass, IVehicle
     {
         public Position Position { get; set; }
-        public Rover(int x, int y, Direction direction)
+        public Rover(Position position)
         {
-            Position = new Position(x, y, direction);
+            Position = position;
         }
         public Rover()
         {
@@ -32,9 +32,8 @@ namespace Mars_Rover_Project.Logic
         {
             Position.UpdateDirection(direction);
         }
-        public void Instruct(string input)
+        public void Instruct(Instruction instruction)
         {
-            Instruction instruction = InputParser.ParseInstruction(input);
             switch (instruction)
             {
                 case Instruction.L:

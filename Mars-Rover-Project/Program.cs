@@ -9,7 +9,7 @@ namespace Mars_Rover_Project
     {
         static void Main()
         {
-            Console.WriteLine();
+            ConsoleUI.PrintPlateau();
         }
     }
 }

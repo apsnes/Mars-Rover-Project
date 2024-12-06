@@ -30,6 +30,16 @@ namespace Mars_Rover_Project.Input
                 default: throw new ArgumentException("Invalid Instruction input");
             }
         }
+        internal static MainMenuOptions ParseMenuOption(string input)
+        {
+            switch (input)
+            {
+                case "1": return MainMenuOptions.AddRover;
+                case "2": return MainMenuOptions.MoveRover;
+                case "3": return MainMenuOptions.Quit;
+                default: throw new ArgumentException("Invalid Instruction input");
+            }
+        }
         internal static PlateauSize ParsePlateauSize(string inputWidth, string inputHeight)
         {
             if (!int.TryParse(inputWidth, out int width) || !int.TryParse(inputHeight, out int height) || width < 1 || height < 1 || width > 20 || height > 20)

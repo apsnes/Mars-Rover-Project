@@ -18,7 +18,7 @@ namespace Mars_Rover_Project
         }
         public static PlateauSize GetInstance()
         {
-            if (instance == null) instance = new PlateauSize(10, 10);
+            if (instance == null) instance = new PlateauSize(9, 9);
             return instance;
         }
         public static PlateauSize GetInstance(int width, int height)
