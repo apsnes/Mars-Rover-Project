@@ -1,4 +1,5 @@
 ﻿using Mars_Rover_Project.Enums;
+using Mars_Rover_Project.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +43,9 @@ namespace Mars_Rover_Project
         {
             Direction = direction;
         }
-        private bool HasPositionNorth => (Y + 1 < plateauSize.Height);
-        private bool HasPositionEast => (X + 1 < plateauSize.Width);
-        private bool HasPositionSouth => (Y - 1 >= 0);
-        private bool HasPositionWest => (X - 1 >= 0);
+        public bool HasPositionNorth => (Y + 1 < plateauSize.Height);
+        public bool HasPositionEast => (X + 1 < plateauSize.Width);
+        public bool HasPositionSouth => (Y - 1 >= 0);
+        public bool HasPositionWest => (X - 1 >= 0);
     }
 }

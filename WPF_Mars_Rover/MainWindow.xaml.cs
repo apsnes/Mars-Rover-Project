@@ -25,6 +25,11 @@ namespace WPF_Mars_Rover
             InitializeComponent();
             DataContext = _session;
 
+            //Hard coded rover for testing
+            Position position = new(0, 0, Mars_Rover_Project.Enums.Direction.North);
+            _session.AddRover(position, 1);
+            _session.CurrentRover = _session.Rovers.First();
+
             PlateauSize instance = PlateauSize.GetInstance();
             int cols = instance.Width;
             int rows = instance.Height;

@@ -28,6 +28,13 @@ namespace Mars_Rover_Project.Logic
         }
         public void Move()
         {
+            int x = CurrentRover.Position.X;
+            int y = CurrentRover.Position.Y;
+            Direction dir = CurrentRover.Position.Direction;
+            if (!CurrentRover.Position.HasPositionNorth || (dir == Direction.North && map[y + 1, x] != " - ")) return;
+            if (!CurrentRover.Position.HasPositionEast || (dir == Direction.East && map[y, x + 1] != " - ")) return;
+            if (!CurrentRover.Position.HasPositionSouth || (dir == Direction.South && map[y - 1, x] != " - ")) return;
+            if (!CurrentRover.Position.HasPositionEast || (dir == Direction.North && map[y, x - 1] != " - ")) return;
             CurrentRover.Move();
         }
         public void TurnLeft()
@@ -67,7 +74,7 @@ namespace Mars_Rover_Project.Logic
         }
         internal void UpdateRovers()
         {
-            foreach (Rover rover in _session.Rovers)
+            foreach (Rover rover in Rovers)
             {
                 int xPosition = rover.Position.X;
                 int yPosition = rover.Position.Y;
